@@ -24,13 +24,9 @@ namespace POMExample.PageObjects
         [FindsBy(How = How.CssSelector, Using = "#sidebar input[class='s']")]
         private IWebElement searchText;
 
-        [FindsBy(How = How.CssSelector, Using = "#sidebar .searchsubmit")]
-        private IWebElement searchIcon;
-
         public ResultPage search(string text)
         {
             searchText.SendKeys(text);
-            //searchIcon.Click();
             wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#sidebar .searchsubmit"))).Click();
             return new ResultPage(driver);
         }
